@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Camilo Romero Maturano — Técnico Audiovisual</title>
+<meta name="description" content="Portfolio de Camilo Romero Maturano, técnico audiovisual y diseñador sonoro. Grabación, mezcla, diseño sonoro y producción multimedia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1B1D1F;
+    --panel: #232527;
+    --panel-line: #34373A;
+    --text: #EDEAE1;
+    --text-muted: #9B9792;
+    --amber: #E8A33D;
+    --teal: #4FA69C;
+    --red: #C1503C;
+    --radius: 3px;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{ box-sizing: inherit; }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  html, body{ height: auto; margin:0; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+  a{ color: var(--amber); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  img, svg{ max-width: 100%; display:block; }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    border-bottom: 1px solid var(--panel-line);
+    padding: 18px 0;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar .id{
+    font-family:'Oswald', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+  .topbar .id span{ color: var(--text-muted); }
+  .topbar nav{ display:flex; gap: 22px; font-size: 14px; }
+  .topbar nav a{ color: var(--text-muted); }
+  .topbar nav a:hover{ color: var(--amber); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: 72px 0 56px; }
+  .hero .kicker{
+    color: var(--teal);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.08;
+    max-width: 11ch;
+  }
+  .hero p.lede{
+    margin-top: 20px;
+    max-width: 46ch;
+    color: var(--text-muted);
+    font-size: 17px;
+  }
+  .hero .cta-row{
+    display:flex;
+    gap: 14px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 11px 20px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--panel-line);
+    color: var(--text);
+  }
+  .btn:hover{ text-decoration:none; border-color: var(--amber); }
+  .btn.primary{
+    background: var(--amber);
+    color: #1B1D1F;
+    border-color: var(--amber);
+    font-weight: 600;
+  }
+  .btn.primary:hover{ background: #f0ae4c; border-color:#f0ae4c; }
+
+  /* waveform */
+  .waveform{
+    margin-top: 48px;
+    display:flex;
+    align-items:flex-end;
+    gap: 3px;
+    height: 64px;
+  }
+  .waveform span{
+    display:block;
+    flex: 1;
+    background: var(--panel-line);
+    border-radius: 1px;
+    transform-origin: bottom;
+    animation: rise 900ms cubic-bezier(.2,.9,.3,1) both;
+  }
+  .waveform span:nth-child(3n+1){ background: var(--amber); }
+  .waveform span:nth-child(5n+2){ background: var(--teal); }
+  @keyframes rise{
+    from{ transform: scaleY(0.05); opacity:0; }
+    to{ transform: scaleY(1); opacity:1; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .waveform span{ animation: none; }
+  }
+
+  /* ---------- Section label ---------- */
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-top: 56px;
+  }
+  .section-head .num{
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .section-head h2{ font-size: 22px; }
+  section#top-of-content{ border-top: 1px solid var(--panel-line); }
+
+  /* ---------- Channel strips (selected work) ---------- */
+  .channel{
+    display:grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 26px 0;
+    border-top: 1px solid var(--panel-line);
+  }
+  .channel:last-child{ border-bottom: 1px solid var(--panel-line); }
+  .channel .ch-id{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .channel .fader{
+    margin-top: 8px;
+    width: 4px;
+    height: 46px;
+    background: var(--panel-line);
+    border-radius: 2px;
+    position: relative;
+  }
+  .channel .fader i{
+    position:absolute;
+    left:-4px;
+    width: 12px;
+    height: 7px;
+    background: var(--amber);
+    border-radius: 1px;
+  }
+  .channel h3{ font-size: 19px; }
+  .channel .meta{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--teal);
+    margin-top: 6px;
+  }
+  .channel p{
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-size: 15px;
+    max-width: 58ch;
+  }
+  .channel .result{
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .channel .result b{ color: var(--amber); font-weight: 600; }
+
+  .embed-slot{
+    margin-top: 16px;
+    border: 1px dashed var(--panel-line);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- Spec sheet (skills) ---------- */
+  .spec-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .spec-row{
+    display:grid;
+    grid-template-columns: 180px 1fr;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--panel-line);
+    font-size: 15px;
+  }
+  .spec-row:last-child{ border-bottom: 1px solid var(--panel-line); }
+  .spec-row .label{
+    color: var(--teal);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding-top: 2px;
+  }
+  .spec-row .value{ color: var(--text); }
+
+  /* ---------- Experience ---------- */
+  .exp-block{ padding: 20px 0; border-top: 1px solid var(--panel-line); }
+  .exp-block:last-child{ border-bottom: 1px solid var(--panel-line); }
+  .exp-head{ display:flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .exp-head h3{ font-size: 17px; }
+  .exp-head .dates{ font-family:'JetBrains Mono', monospace; font-size: 13px; color: var(--text-muted); white-space:nowrap; }
+  .exp-role{ color: var(--teal); font-size: 14px; margin-top: 4px; }
+  .exp-block ul{ margin: 12px 0 0; padding-left: 18px; color: var(--text-muted); font-size: 14.5px; }
+  .exp-block li{ margin-bottom: 6px; }
+
+  /* ---------- Footer / contact ---------- */
+  footer{
+    margin-top: 72px;
+    border-top: 1px solid var(--panel-line);
+    padding: 40px 0 48px;
+  }
+  footer h2{ font-size: 24px; max-width: 16ch; }
+  footer p{ color: var(--text-muted); margin-top: 10px; }
+  .contact-row{
+    display:flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    font-size: 14.5px;
+  }
+  .contact-row div{ color: var(--text-muted); }
+  .contact-row div span{ display:block; color: var(--text-muted); font-family:'JetBrains Mono', monospace; font-size: 11.5px; margin-bottom: 4px; }
+  .contact-row a{ color: var(--text); }
+  .contact-row a:hover{ color: var(--amber); }
+  .fine{ margin-top: 40px; font-size: 12.5px; color: var(--panel-line); }
+
+  @media (max-width: 560px){
+    .channel{ grid-template-columns: 36px 1fr; }
+    .spec-row{ grid-template-columns: 1fr; gap: 6px; }
+    .topbar nav{ gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="id">CAMILO ROMERO MATURANO <span>/ TÉCNICO AUDIOVISUAL</span></div>
+      <nav>
+        <a href="#trabajo">Trabajo</a>
+        <a href="#especificaciones">Herramientas</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="kicker">AUDIO · DISEÑO SONORO · STREAMING · POSTPRODUCCIÓN</div>
+      <h1>El sonido es la mitad de la imagen.</h1>
+      <p class="lede">Técnico audiovisual y diseñador sonoro en CABA. Grabo, mezclo y diseño sonido para cine, instalaciones, streaming y podcast — bajo normativas LUFS / EBU R128, de la sala de grabación a la plataforma de distribución.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#trabajo">Ver trabajos</a>
+        <a class="btn" href="cv.pdf">Descargar CV</a>
+        <a class="btn" href="mailto:cromeromaturano@gmail.com">Escribime</a>
+      </div>
+      <div class="waveform" aria-hidden="true">
+        <span style="height:30%; animation-delay:0ms"></span>
+        <span style="height:62%; animation-delay:20ms"></span>
+        <span style="height:40%; animation-delay:40ms"></span>
+        <span style="height:85%; animation-delay:60ms"></span>
+        <span style="height:55%; animation-delay:80ms"></span>
+        <span style="height:70%; animation-delay:100ms"></span>
+        <span style="height:35%; animation-delay:120ms"></span>
+        <span style="height:95%; animation-delay:140ms"></span>
+        <span style="height:48%; animation-delay:160ms"></span>
+        <span style="height:65%; animation-delay:180ms"></span>
+        <span style="height:30%; animation-delay:200ms"></span>
+        <span style="height:78%; animation-delay:220ms"></span>
+        <span style="height:42%; animation-delay:240ms"></span>
+        <span style="height:58%; animation-delay:260ms"></span>
+        <span style="height:88%; animation-delay:280ms"></span>
+        <span style="height:33%; animation-delay:300ms"></span>
+        <span style="height:67%; animation-delay:320ms"></span>
+        <span style="height:50%; animation-delay:340ms"></span>
+        <span style="height:73%; animation-delay:360ms"></span>
+        <span style="height:28%; animation-delay:380ms"></span>
+        <span style="height:60%; animation-delay:400ms"></span>
+        <span style="height:44%; animation-delay:420ms"></span>
+        <span style="height:80%; animation-delay:440ms"></span>
+        <span style="height:38%; animation-delay:460ms"></span>
+        <span style="height:55%; animation-delay:480ms"></span>
+        <span style="height:68%; animation-delay:500ms"></span>
+        <span style="height:30%; animation-delay:520ms"></span>
+        <span style="height:90%; animation-delay:540ms"></span>
+        <span style="height:46%; animation-delay:560ms"></span>
+        <span style="height:62%; animation-delay:580ms"></span>
+      </div>
+    </section>
+
+    <section id="trabajo">
+      <div id="top-of-content"></div>
+      <div class="section-head">
+        <span class="num">01</span>
+        <h2>Trabajo seleccionado</h2>
+      </div>
+
+      <div class="channel">
+        <div><div class="ch-id">CH 01</div><div class="fader"><i style="bottom:68%"></i></div></div>
+        <div>
+          <h3>LAVA 2: El nuevo show del Narciso</h3>
+          <div class="meta">PRODUCCIÓN SONORA · SERIE / LARGOMETRAJE · 2022–2023</div>
+          <p>Producción sonora completa de la serie de 10 episodios, desde grabación hasta mezcla final.</p>
+          <div class="result">Nominada a <b>Mejor Sonido 2023 (AASA)</b>. Seleccionada en el Festival Internacional de Cine de Mar del Plata y el Festival de Sitges.</div>
+          <div class="embed-slot">&lt;!-- reemplazar por iframe de Vimeo/YouTube con el tráiler o una escena --&gt;</div>
+        </div>
+      </div>
+
+      <div class="channel">
+        <div><div class="ch-id">CH 02</div><div class="fader"><i style="bottom:40%"></i></div></div>
+        <div>
+          <h3>MIJU — Museo de la Imaginación y el Juego</h3>
+          <div class="meta">DISEÑO SONORO · INSTALACIÓN INTERACTIVA · 2023</div>
+          <p>Paisajes sonoros e instalaciones auditivas para salas interactivas, en colaboración con GCBA y Estudio CINCO.</p>
+          <div class="result">Más de <b>3.000 visitantes mensuales</b> en las salas intervenidas.</div>
+          <div class="embed-slot">&lt;!-- reemplazar por audio de SoundCloud o video corto de la instalación --&gt;</div>
+        </div>
+      </div>
+
+      <div class="channel">
+        <div><div class="ch-id">CH 03</div><div class="fader"><i style="bottom:55%"></i></div></div>
+        <div>
+          <h3>Casa Fusa — Podcast</h3>
+          <div class="meta">PRODUCCIÓN TÉCNICA Y AUDIOVISUAL · PODCAST · 2021–ACTUALIDAD</div>
+          <p>Setup multicámara, iluminación, escenografía y streaming en vivo con OBS; mezcla y edición de cada episodio.</p>
+          <div class="result">Distribución regular en <b>Spotify</b>, uno de más de 10 podcasts producidos técnicamente en el estudio.</div>
+          <div class="embed-slot">&lt;!-- reemplazar por embed de Spotify del episodio --&gt;</div>
+        </div>
+      </div>
+
+      <div class="channel">
+        <div><div class="ch-id">CH 04</div><div class="fader"><i style="bottom:30%"></i></div></div>
+        <div>
+          <h3>Paka Paka / CineAR</h3>
+          <div class="meta">POSTPRODUCCIÓN DE AUDIO BROADCAST · NORMATIVA LUFS / EBU R128</div>
+          <p>Diseño sonoro y exportación de audio para producciones audiovisuales bajo normativa europea de TV y streaming, con mezcla en estéreo y surround 5.1.</p>
+          <div class="result">Entregas aprobadas bajo control de calidad de <b>LUFS / EBU R128</b> para canales nacionales de TV pública.</div>
+        </div>
+      </div>
+
+      <div class="channel">
+        <div><div class="ch-id">CH 05</div><div class="fader"><i style="bottom:48%"></i></div></div>
+        <div>
+          <h3>Grabaciones musicales en vivo</h3>
+          <div class="meta">GRABACIÓN · MEZCLA · MASTERIZACIÓN · 2021–ACTUALIDAD</div>
+          <p>Microfoneo, grabación y mezcla en Cubase para más de 20 proyectos musicales anuales en rock, folklore y géneros urbanos.</p>
+          <div class="result">Armado de rider técnico y asistencia en sesiones en vivo de punta a punta.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="especificaciones">
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>Herramientas</h2>
+      </div>
+      <div class="spec-grid">
+        <div class="spec-row">
+          <div class="label">AUDIO (DAW)</div>
+          <div class="value">Cubase, Ableton, Reaper, Pro Tools — plugins VST/VSTi, mezcla y mastering</div>
+        </div>
+        <div class="spec-row">
+          <div class="label">NORMATIVAS</div>
+          <div class="value">LUFS, EBU R128, mezcla surround 5.1</div>
+        </div>
+        <div class="spec-row">
+          <div class="label">VIDEO / STREAMING</div>
+          <div class="value">OBS, Vegas Pro, exportación H.264/MP4, setup de cámaras e iluminación</div>
+        </div>
+        <div class="spec-row">
+          <div class="label">DISEÑO GRÁFICO</div>
+          <div class="value">Photoshop, Canva, Illustrator</div>
+        </div>
+        <div class="spec-row">
+          <div class="label">SOPORTE TÉCNICO</div>
+          <div class="value">Configuración de estaciones audiovisuales, ruteo de señal, instalación de software de audio, mantenimiento de PC</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="section-head">
+        <span class="num">03</span>
+        <h2>Experiencia y formación</h2>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-head">
+          <h3>El Establo Estudio</h3>
+          <div class="dates">2021 — actualidad</div>
+        </div>
+        <div class="exp-role">Técnico Audiovisual y Productor Multimedia · CABA</div>
+        <ul>
+          <li>Producción integral de más de 20 proyectos musicales anuales: grabación, microfoneo, mezcla y masterización.</li>
+          <li>Diseño sonoro para audiovisuales con criterio narrativo, bajo normativas LUFS y EBU R128.</li>
+          <li>Producción técnica de más de 10 podcasts, incluyendo setup de cámaras, iluminación y streaming en vivo.</li>
+        </ul>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-head">
+          <h3>Certificación en Mezcla 5.1 y Surround</h3>
+          <div class="dates">2022</div>
+        </div>
+        <div class="exp-role">Dolby Laboratories</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-head">
+          <h3>Operador de Sonido (espacios abiertos y afines)</h3>
+          <div class="dates">2023</div>
+        </div>
+        <div class="exp-role">Ministerio de Educación — GCBA</div>
+      </div>
+    </section>
+
+    <footer id="contacto">
+      <h2>¿Trabajamos juntos?</h2>
+      <p>Disponible para proyectos de grabación, mezcla, diseño sonoro y producción audiovisual en CABA y AMBA.</p>
+      <div class="contact-row">
+        <div><span>EMAIL</span><a href="mailto:cromeromaturano@gmail.com">cromeromaturano@gmail.com</a></div>
+        <div><span>TELÉFONO</span><a href="tel:+541158173551">+54 11 5817-3551</a></div>
+        <div><span>LINKEDIN</span><a href="https://linkedin.com/in/camilo-romero-maturano" target="_blank" rel="noopener">in/camilo-romero-maturano</a></div>
+        <div><span>UBICACIÓN</span><span class="mono" style="font-size:14.5px; color:var(--text)">CABA, Buenos Aires</span></div>
+      </div>
+      <div class="fine">Camilo Romero Maturano — CABA, Buenos Aires, Argentina</div>
+    </footer>
+  </div>
+
+</body>
+</html>
